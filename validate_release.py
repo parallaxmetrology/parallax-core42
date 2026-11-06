@@ -23,6 +23,12 @@ def sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+# Known answers were recorded on macOS arm64, where they reproduce exactly. Other
+# platforms differ at the floating-point level (up to about 1.4e-8 relative on Linux
+# x86_64); set CORE42_KNOWN_ANSWER_RTOL=1e-7 there. See docs/KNOWN_ISSUES.md.
+KNOWN_ANSWER_RTOL = float(__import__("os").environ.get("CORE42_KNOWN_ANSWER_RTOL", "1e-10"))
+
+
 def require(condition: bool, name: str, checks: list[str]) -> None:
     if not condition:
         raise AssertionError(name)
@@ -52,7 +58,7 @@ def main() -> None:
         raise AssertionError("nondefault measurement configuration is rejected")
     for axis in AXES:
         difference = abs(float(observed[axis]) - float(expected[axis]))
-        require(difference <= 1e-10 * max(1.0, abs(float(expected[axis]))), f"known answer matches: {axis}", checks)
+        require(difference <= KNOWN_ANSWER_RTOL * max(1.0, abs(float(expected[axis]))), f"known answer matches: {axis}", checks)
 
     with (ROOT / "docs" / "AXIS_DICTIONARY.csv").open(newline="", encoding="utf-8") as handle:
         dictionary = list(csv.DictReader(handle))

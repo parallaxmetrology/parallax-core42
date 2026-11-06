@@ -4,11 +4,28 @@ on:
     branches: [main]
   pull_request:
 jobs:
-  test:
+  reference-platform:
+    # macOS arm64 with the locked versions: the known answers must reproduce to 1e-10.
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements-lock.txt && pip install -e ".[dev,examples]"
+      - run: PYTHONPATH=src python scripts/platform_check.py
+      - run: PYTHONPATH=src python validate_release.py --check-only
+      - run: shasum -a 256 -c MANIFEST_SHA256.txt
+      - run: pytest -q
+  other-platforms:
+    # Linux x86_64, current dependency versions: floating-point differences up to ~1e-8
+    # relative are expected (docs/KNOWN_ISSUES.md), so the known answers are checked at 1e-7.
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python: ["3.11", "3.12"]
+    env:
+      CORE42_KNOWN_ANSWER_RTOL: "1e-7"
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5

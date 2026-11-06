@@ -11,7 +11,7 @@ Packaging only; measurement code, constants, fixtures and validation records are
 - Added `docs/HOW_IT_COMPARES.md`, `docs/KNOWN_ISSUES.md` and a worked provenance
   example in `examples/tcga_route_fingerprint/`.
 - Added `examples/fingerprint_cohort.py` (a provenance report for any cohort) and `tests/test_examples.py`.
-- Added CI, issue templates and package metadata; rebuilt `MANIFEST_SHA256.txt`.
+- Added CI (macOS reference platform at the release tolerance; Linux at 1e-7, see `docs/KNOWN_ISSUES.md` item 13), `scripts/platform_check.py`, issue templates and package metadata; the known-answer tolerance in the validator and tests can now be set with `CORE42_KNOWN_ANSWER_RTOL` (default unchanged, 1e-10); rebuilt `MANIFEST_SHA256.txt`.
 
 ## 1.0.0 — 2026-09-03
 

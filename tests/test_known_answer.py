@@ -15,6 +15,8 @@ from parallax_core42.cli import main as cli_main
 
 
 ROOT = Path(__file__).resolve().parent.parent
+# Reference platform macOS arm64: 1e-10. Linux x86_64 differs by up to ~1.4e-8 relative; CI sets 1e-7 there.
+RTOL = float(__import__("os").environ.get("CORE42_KNOWN_ANSWER_RTOL", "1e-10"))
 FIXTURE = ROOT / "examples" / "synthetic_histology_fixture.png"
 RAW_EXPECTED = ROOT / "examples" / "example_output.jsonl"
 NORM_EXPECTED = ROOT / "examples" / "example_output_fixed_macenko.jsonl"
@@ -33,7 +35,7 @@ class Core42KnownAnswer(unittest.TestCase):
         for column in OUTPUT_COLUMNS:
             if column in AXES:
                 self.assertTrue(
-                    np.isclose(float(observed[column]), float(expected[column]), rtol=1e-10, atol=1e-12, equal_nan=True),
+                    (np.isnan(float(observed[column])) and np.isnan(float(expected[column]))) or abs(float(observed[column]) - float(expected[column])) <= RTOL * max(1.0, abs(float(expected[column]))),
                     msg=f"{column}: observed={observed[column]} expected={expected[column]}",
                 )
             else:

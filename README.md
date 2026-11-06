@@ -71,7 +71,7 @@ shasum -a 256 -c MANIFEST_SHA256.txt
 pytest -q
 ```
 
-The release reproduces the archived v4.1 research kernel on all 42 axes with maximum absolute difference 0.0, on a bundled synthetic fixture and on a real H&E tile (not bundled). The fixture is synthetic and redistributable; it exercises the numerical path and says nothing about biology. Details: [docs/VALIDATION.md](docs/VALIDATION.md), [docs/PROVENANCE.md](docs/PROVENANCE.md).
+On its reference platform (macOS arm64, locked versions in `requirements-lock.txt`) the release reproduces the archived v4.1 research kernel on all 42 axes with maximum absolute difference 0.0, on a bundled synthetic fixture and on a real H&E tile (not bundled). Other platforms differ at the floating-point level (up to about 1.4e-8 relative on Linux x86_64); CI checks both, and `scripts/platform_check.py` reports the differences on your machine. The fixture is synthetic and redistributable; it exercises the numerical path and says nothing about biology. Details: [docs/VALIDATION.md](docs/VALIDATION.md), [docs/PROVENANCE.md](docs/PROVENANCE.md).
 
 ## Contribute
 

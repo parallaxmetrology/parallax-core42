@@ -283,11 +283,15 @@ Every axis, its unit and its caution: <a href="docs/AXIS_DICTIONARY.md">docs/AXI
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="va">PYTHONPATH</span><span class="op">=</span>src <span class="ex">python</span> validate_release.py <span class="at">--check-only</span>    <span class="co"># 71 checks</span></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="ex">shasum</span> <span class="at">-a</span> 256 <span class="at">-c</span> MANIFEST_SHA256.txt</span>
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-q</span></span></code></pre></div>
-<p>The release reproduces the archived v4.1 research kernel on all 42
-axes with maximum absolute difference 0.0, on a bundled synthetic
-fixture and on a real H&amp;E tile (not bundled). The fixture is
-synthetic and redistributable; it exercises the numerical path and says
-nothing about biology. Details: <a href="docs/VALIDATION.md">docs/VALIDATION.md</a>, <a href="docs/PROVENANCE.md">docs/PROVENANCE.md</a>.</p>
+<p>On its reference platform (macOS arm64, locked versions in
+<code>requirements-lock.txt</code>) the release reproduces the archived
+v4.1 research kernel on all 42 axes with maximum absolute difference
+0.0, on a bundled synthetic fixture and on a real H&amp;E tile (not
+bundled). Other platforms differ at the floating-point level (up to
+about 1.4e-8 relative on Linux x86_64); CI checks both, and
+<code>scripts/platform_check.py</code> reports the differences on your
+machine. The fixture is synthetic and redistributable; it exercises the
+numerical path and says nothing about biology. Details: <a href="docs/VALIDATION.md">docs/VALIDATION.md</a>, <a href="docs/PROVENANCE.md">docs/PROVENANCE.md</a>.</p>
 <h2 id="contribute">Contribute</h2>
 <ul>
 <li>Run it on <strong>your</strong> cohort and report what grouped and
