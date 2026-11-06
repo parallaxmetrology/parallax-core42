@@ -6,7 +6,7 @@ on:
 jobs:
   reference-platform:
     # macOS arm64 with the locked versions: the known answers must reproduce to 1e-10.
-    runs-on: macos-14
+    runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
