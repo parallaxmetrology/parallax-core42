@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use Parallax Core 42 in research, please cite it as below."
+title: "Parallax Core 42: deterministic named measurements for RGB histology patches"
+type: software
+version: 1.0.0
+date-released: 2026-09-03
+license: MIT
+authors:
+  - family-names: Parrish
+    given-names: Russell
+    orcid: https://orcid.org/0009-0008-9781-7995
+repository-code: https://github.com/parallaxmetrology/parallax-core42
+keywords: [computational pathology, histology, H&E, batch effects, dataset quality control, interpretable features]
+abstract: >
+  A frozen, deterministic 42-axis patch-level measurement instrument for H&E images,
+  reconstructed from the Parallax Pathology v4.1 kernel with 42/42 axes reproduced
+  exactly. Intended for finding how a dataset was made (site, scanner, production
+  route, preparation) with named measurements, and as an interpretable block next to
+  colour features. Release engineering by Codex (OpenAI); public packaging and analysis
+  with Claude (Anthropic).

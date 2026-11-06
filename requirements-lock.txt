@@ -1,0 +1,7 @@
+# Direct dependency versions used to build and validate this release on 2026-09-03.
+# See validation/BUILD_ENVIRONMENT.json for interpreter and platform details.
+# Install the package itself with: python -m pip install -e .
+numpy==2.4.2
+Pillow==12.1.1
+scipy==1.17.0
+scikit-image==0.26.0

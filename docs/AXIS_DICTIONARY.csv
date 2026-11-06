@@ -1,0 +1,43 @@
+order,axis,family,definition,reported_unit,expected_range,scale_or_reference_dependency,caution
+1,gap_rv,gap,Fraction of the Sobel-active/Canny-inactive gap field below the normalized activity threshold,fraction,"[0,1]",void_threshold=0.18,High values mean the soft-gradient field is sparse
+2,gap_theta,gap,One minus normalized 8-bin gradient-orientation entropy within the active gap field,index,"approximately [0,1]",baseline LAB-L gradient directions,Uses baseline gradient directions as in the verified kernel
+3,gap_delta_vs_baseline,gap,Gap-field void ratio minus baseline-field void ratio,difference,"[-1,1]",void_threshold=0.18,Positive values indicate a sparser gap field
+4,gap_ds,gap,Twice the mean active-field distance transform divided by the shorter image dimension,normalized length,"[0,1] in ordinary cases",measured pixel grid,Threshold- and resize-dependent
+5,blob_density,nuclear_blob,DoG detections on the normalized hematoxylin channel per 100x100 measured pixels,count per 10000 px,"[0,inf)",blob sigmas 6-20 px,Not a validated nucleus count
+6,blob_size_mean,nuclear_blob,Mean blob sigma times square root of two,pixels,"[0,inf)",measured pixel grid,Meaning requires controlled physical resolution
+7,blob_size_cv,nuclear_blob,Standard deviation divided by mean of detected blob radii,ratio,"[0,inf)",detected blobs,Zero when fewer than two blobs
+8,k_rv,confirmed_kernel,Fraction of the confirmed luminance-by-LM-opponent field below the normalized activity threshold,fraction,"[0,1]",void_threshold=0.18,Confirmed field may be empty
+9,k_mu,confirmed_kernel,Fraction of normalized confirmed-field mass contained in pixels at or above its 75th percentile,fraction,"[0,1]",within-patch percentile,Named cohesion in the historical kernel
+10,k_sdi,confirmed_kernel,Mean distance of active confirmed pixels from their centroid divided by image diagonal,normalized length,"[0,1]",measured pixel grid,Threshold-dependent dispersion index
+11,k_rho,confirmed_kernel,Active confirmed-field area divided by convex-hull area times 100 and capped at 150,percent-like index,"[0,150]",active-pixel hull,Not a physical density
+12,k_xp,confirmed_kernel,Fraction of confirmed-field mass in the outer 15 percent image band,fraction,"[0,1]",image frame,Frame-relative and crop-sensitive
+13,k_theta,confirmed_kernel,One minus normalized 8-bin baseline-gradient orientation entropy over active confirmed pixels,index,"approximately [0,1]",baseline LAB-L gradients,Uses baseline rather than confirmed-field gradients
+14,k_ds,confirmed_kernel,Twice the mean active confirmed-field distance transform divided by shorter image dimension,normalized length,"[0,1] in ordinary cases",measured pixel grid,Threshold- and resize-dependent
+15,b_rv,baseline_kernel,Fraction of normalized LAB-L gradient magnitude below the activity threshold,fraction,"[0,1]",void_threshold=0.18,Measures gradient sparsity
+16,b_mu,baseline_kernel,Fraction of normalized baseline mass contained in pixels at or above its 75th percentile,fraction,"[0,1]",within-patch percentile,Named cohesion in the historical kernel
+17,b_sdi,baseline_kernel,Mean distance of active baseline pixels from their centroid divided by image diagonal,normalized length,"[0,1]",measured pixel grid,Threshold-dependent dispersion index
+18,b_rho,baseline_kernel,Active baseline area divided by convex-hull area times 100 and capped at 150,percent-like index,"[0,150]",active-pixel hull,Not a physical density
+19,b_xp,baseline_kernel,Fraction of baseline mass in the outer 15 percent image band,fraction,"[0,1]",image frame,Frame-relative and crop-sensitive
+20,b_theta,baseline_kernel,One minus normalized 8-bin baseline-gradient orientation entropy over active baseline pixels,index,"approximately [0,1]",baseline LAB-L gradients,Direction changes under image rotation
+21,b_ds,baseline_kernel,Twice the mean active baseline distance transform divided by shorter image dimension,normalized length,"[0,1] in ordinary cases",measured pixel grid,Threshold- and resize-dependent
+22,omega,relational,Mean pairwise Euclidean distance among normalized centroids of eligible independent mask fields,normalized image-coordinate distance,"[0,sqrt(2)] in principle",masks with void ratio below 0.97,This is mask-centroid disagreement; it is not reference-based structural deviation
+23,gamma,relational,Confirmed-field void ratio minus cone-maximum-field void ratio,difference,"[-1,1]",mask definitions and threshold,Named boundary permissiveness historically
+24,delta_r,relational,Confirmed-field void ratio minus baseline-field void ratio,difference,"[-1,1]",mask definitions and threshold,Luminance/chromatic disagreement proxy
+25,beta,relational,One minus blind-spot-field void ratio,fraction,"[0,1]",blind-spot mask,Color-without-luminance activity proxy
+26,g1_len,multiscale_geometry,Path length of the LAB-L mass centroid across Gaussian sigmas 2 4 8 16 and 32,normalized image-coordinate length,"[0,inf)",five fixed pixel scales,Scale- and crop-dependent
+27,g1_curv,multiscale_geometry,Mean turning angle of the multiscale centroid path,radians,"[0,pi]",five fixed pixel scales,Unstable when successive centroid movements are tiny
+28,g2_V,multiscale_geometry,Fraction of morphologically filtered locally thresholded LAB-L void pixels,fraction,"[0,1]",adaptive threshold and pixel morphology,Operational void fraction not a histologic compartment label
+29,g2_n,multiscale_geometry,Number of connected filtered LAB-L void regions,count,"[0,inf)",measured pixel grid and morphology,Scale-dependent count
+30,g2_AR,multiscale_geometry,Mean major/minor axis ratio of detected void regions,ratio,"[1,inf) ordinarily",detected regions,Defaults to 1 when no eligible regions exist
+31,g2_cut,multiscale_geometry,Largest detected void-region area divided by patch area,fraction,"[0,1]",detected regions,Operational largest-region fraction
+32,g3_kvar,multiscale_geometry,Mean variance of unsigned successive tangent-change angles across detected edge contours,radians squared,"[0,inf)",Canny contour extraction,Unsigned angles do not encode curvature direction
+33,g3_infl,multiscale_geometry,Mean density of changes around each contour's mean tangent-change angle,index,"[0,1] approximately",Canny contour extraction,Historical name suggests inflections but this is an operational sign-change density
+34,g4_s1,multiscale_geometry,Normalized 36-bin LAB-L gradient-orientation entropy at sigma 1 multiplied by five,score,"[0,5]",sigma in measured pixels,High values indicate orientation diversity
+35,g4_s8,multiscale_geometry,Normalized 36-bin LAB-L gradient-orientation entropy at sigma 8 multiplied by five,score,"[0,5]",sigma in measured pixels,High values indicate orientation diversity
+36,g4_s32,multiscale_geometry,Normalized 36-bin LAB-L gradient-orientation entropy at sigma 32 multiplied by five,score,"[0,5]",sigma in measured pixels,Fixed pixel scale can span much of a small input patch
+37,g4_slope,multiscale_geometry,Change in orientation entropy score from first to last G4 scale divided by log scale span,score per log pixel scale,unbounded,g4 scales,Depends on fixed pixel-scale range
+38,sci,composite,Weighted heuristic of quadrant regularity orientation alignment scale consistency and autocorrelation rhythm,score,"[0,5]",hard-coded v4.1 weights,Composite operational score; not independently calibrated biology
+39,vcli_g,composite,Weighted heuristic composite of G1 through G4 and SCI after fixed reference standardization,score,"[0,5]",hard-coded v4.1 reference means and scales,Composite operational score; not a learned or clinically calibrated index
+40,rc_f,radial_compliance,One minus Jensen-Shannon distance between frame-centered radial mass profile and best-fit exponential,index,"[0,1]",60 radial bins and optimized decay,Frame-centered model fit
+41,rc_s,radial_compliance,One minus Jensen-Shannon distance between structure-centroid radial mass profile and best-fit exponential,index,"[0,1]",60 radial bins and optimized decay,Structure-centered model fit
+42,drc,radial_compliance,Structure-centered radial compliance minus frame-centered radial compliance,difference,"[-1,1]",rc_s and rc_f,Positive values favor the structure-centered radial model

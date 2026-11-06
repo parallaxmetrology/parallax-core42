@@ -1,0 +1,10 @@
+units per group: {'AA-regular': 95, 'other-sites': 71, 'AA-derivative': 15} (units with < 4 patches dropped: 0)
+AA-regular vs AA-derivative: 19/42 axes with AUC >= 0.8 or <= 0.2; strongest: gap_ds 0.00, k_ds 0.00, gap_delta_vs_baseline 1.00, b_ds 0.00, g2_cut 0.01, g2_V 0.01
+other-sites vs AA-derivative: 17/42 axes with AUC >= 0.8 or <= 0.2; strongest: gap_delta_vs_baseline 1.00, gap_ds 0.00, b_ds 0.00, k_ds 0.00, gamma 0.00, blob_size_mean 0.01
+other-sites vs AA-regular: 11/42 axes with AUC >= 0.8 or <= 0.2; strongest: gamma 0.01, k_theta 0.02, b_ds 0.08, blob_density 0.10, k_rho 0.87, k_rv 0.13
+leave-one-unit-out shrinkage LDA (fitted readout), balanced accuracy 0.977 (chance 0.333)
+predicted      AA-derivative  AA-regular  other-sites
+true                                                 
+AA-derivative             15           0            0
+AA-regular                 0          91            4
+other-sites                0           2           69

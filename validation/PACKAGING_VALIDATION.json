@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "wheel": "dist/parallax_core42-1.0.0-py3-none-any.whl",
+  "wheel_sha256": "4f73c1287e705ce023fa9875414ed3695c31f0118f0d1de3f35247e196265197",
+  "build_command": "python3 -m pip wheel . --no-deps --no-build-isolation",
+  "installation": "Installed into an isolated target directory with --no-deps",
+  "smoke_command": "python3 -m parallax_core42 examples/synthetic_histology_fixture.png --output smoke.csv",
+  "smoke_output_sha256": "ac9e36811f401863f54c327340e2b5b07aa4c4b7a05a2ed2de6256cd943e3eef",
+  "expected_output_sha256": "ac9e36811f401863f54c327340e2b5b07aa4c4b7a05a2ed2de6256cd943e3eef",
+  "byte_identical_to_expected": true,
+  "boundary": "Packaging and executable smoke validation in the recorded build environment; dependency installation was not tested from the public network."
+}

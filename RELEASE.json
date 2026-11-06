@@ -1,0 +1,19 @@
+{
+  "name": "Parallax Core 42",
+  "package": "parallax-core42",
+  "version": "1.0.0",
+  "schema_id": "parallax-core42-1.0.0",
+  "release_date": "2026-09-03",
+  "axis_count": 42,
+  "measurement_randomness": false,
+  "measurement_training": false,
+  "measurement_reference_dependency": false,
+  "frozen_resize_long_edge_px": 512,
+  "historical_kernel_sha256": "b6fc19229b98f854c95bfcb1c3ebb8040cd935303ec1be0cbf1349d14d30a43e",
+  "corrected_normalizer_source_sha256": "566bdb05ae2bf92d52d450d3bd0eab64e42784554066859d903e713c6bc4d6ff",
+  "normalizer_target_source_record_sha256": "d2f71ff6bb3d02f86f3d2700a394a1a28fb89adb907258afb1f3b30de2b983ef",
+  "fixture_sha256": "35e83fb7f64d0b1ee02d1ffe1cd55ec94e6d658dd02db03efa5b61a58c01f827",
+  "historical_equivalence": "42/42 axes at 1e-12 on synthetic and real H&E checks; maximum absolute difference 0.0",
+  "license_status": "MIT (code) and CC BY 4.0 (documentation), assigned 2026-11-06; see NOTICE.md",
+  "boundary": "Research measurement software only. No diagnostic, prognostic, biological, identity, preparation-invariance, or external-performance claim is created by this release."
+}

@@ -1,0 +1,36 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "parallax-core42"
+version = "1.0.0"
+description = "Deterministic 42-axis measurement instrument for RGB histology patches: a named fingerprint for finding how a dataset was made"
+readme = "README.md"
+license = {text = "MIT"}
+authors = [{ name = "Russell Parrish", email = "russellgparrish@gmail.com" }]
+keywords = ["computational pathology", "histology", "H&E", "batch effects", "dataset quality control", "provenance", "interpretable features"]
+requires-python = ">=3.11"
+dependencies = [
+  "numpy>=2.0,<3",
+  "Pillow>=10,<13",
+  "scipy>=1.13,<2",
+  "scikit-image>=0.24,<1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=7"]
+examples = ["pandas>=2", "scikit-learn>=1.4", "matplotlib>=3.8"]
+
+[project.urls]
+Source = "https://github.com/parallaxmetrology/parallax-core42"
+Issues = "https://github.com/parallaxmetrology/parallax-core42/issues"
+
+[project.scripts]
+parallax-core42 = "parallax_core42.cli:main"
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

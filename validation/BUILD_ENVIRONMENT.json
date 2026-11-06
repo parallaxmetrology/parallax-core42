@@ -1,0 +1,12 @@
+{
+  "python": "3.14.3",
+  "python_implementation": "CPython",
+  "platform_system": "Darwin",
+  "platform_release": "25.3.0",
+  "machine": "arm64",
+  "numpy": "2.4.2",
+  "scipy": "1.17.0",
+  "scikit_image": "0.26.0",
+  "pillow": "12.1.1",
+  "byteorder": "little"
+}

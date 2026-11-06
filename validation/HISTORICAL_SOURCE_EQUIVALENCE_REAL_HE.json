@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "historical_kernel_sha256": "b6fc19229b98f854c95bfcb1c3ebb8040cd935303ec1be0cbf1349d14d30a43e",
+  "image_sha256": "6c6f158dfd74746996beec4f3af7a0f4c6b6fd6b222efe45916b7a3b6cb96f75",
+  "axes_compared": 42,
+  "axes_matching_at_1e-12": 42,
+  "maximum_absolute_difference": 0.0,
+  "mismatches": [],
+  "boundary": "Numerical source equivalence only; it does not validate biological meaning or external performance."
+}

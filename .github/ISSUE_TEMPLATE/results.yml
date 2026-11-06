@@ -1,0 +1,25 @@
+name: Results on your cohort
+description: What the fingerprint showed on your slides, including when it found nothing
+labels: [results]
+body:
+  - type: input
+    id: data
+    attributes:
+      label: Tissue, number of slides and sites, scanners
+      placeholder: e.g. colorectal H&E, 120 slides, 3 sites, 2 scanner models
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: What you were looking for
+      description: Site, scanner, staining batch, preparation, an unknown grouping, or a known label.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: What happened
+      description: Which axes separated which groups (AUCs or effect sizes), what you checked it against, and anything it missed. No images or patient data needed.
+    validations:
+      required: true

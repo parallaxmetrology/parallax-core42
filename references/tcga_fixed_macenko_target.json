@@ -1,0 +1,14 @@
+{
+  "schema": "parallax-fixed-macenko-target-1",
+  "description": "Recorded target used by the corrected fixed-Macenko path in the verified TCGA/HER2/HTAN/CPTAC experiments. This is an optional preprocessing reference, not part of Core 42 itself.",
+  "alpha": 1.0,
+  "beta": 0.15,
+  "reference_member": "TCGA-AA-3710-01Z-00-DX1.78082263-b7e9-4281-aa55-2da5f80e4499_(12916,16341).jpg",
+  "stain_matrix_target": [
+    [0.6038868380224794, 0.716489279672613, 0.34923315847357916],
+    [0.4853149075031241, 0.8560860540939885, 0.17772481127017314]
+  ],
+  "maxC_target": [1.2825225047023803, 0.8685839414924473],
+  "source_record_sha256": "d2f71ff6bb3d02f86f3d2700a394a1a28fb89adb907258afb1f3b30de2b983ef",
+  "boundary": "Use of this target does not establish stain or preparation invariance. Preserve the target identifier with every derived dataset."
+}
