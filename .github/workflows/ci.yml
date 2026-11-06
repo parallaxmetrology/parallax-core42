@@ -15,6 +15,7 @@ jobs:
         with:
           python-version: ${{ matrix.python }}
       - run: pip install -e ".[dev,examples]"
+      - run: PYTHONPATH=src python scripts/platform_check.py
       - run: PYTHONPATH=src python validate_release.py --check-only
       - run: sha256sum -c MANIFEST_SHA256.txt
       - run: pytest -q
