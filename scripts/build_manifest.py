@@ -25,6 +25,7 @@ def main() -> None:
         if path.is_file()
         and path != OUTPUT
         and "__pycache__" not in path.parts
+        and not any(part in {".git", ".pytest_cache", ".ruff_cache", ".venv"} or part.endswith(".egg-info") for part in path.parts)
         and not path.name.endswith(".pyc")
     )
     OUTPUT.write_text(
