@@ -35,6 +35,21 @@ Adding Core42 to colour changed AUROC by −0.023 (95% interval −0.085 to +0.0
 
 **Reading the pair.** Complementary to colour for patch-level tumour detection, including across hospitals; nothing detectable for weakly supervised patient-level grading. An operating window, not a general claim.
 
+### PathoROB robustness benchmark (November 2026; 99,392 tiles, three datasets)
+
+Run with the benchmark's own code and defaults; each axis standardised within each dataset. Full write-up: [PathoROB note](https://www.parallaxmetrology.com/PathoROB_NOTE.html).
+
+| Robustness Index | TCGA | Camelyon | Tolkach | average |
+|---|---|---|---|---|
+| Core42 as released | 0.527 | 0.471 | 0.534 | 0.510 |
+| random 42-column features | 0.500 | 0.499 | 0.300 | 0.433 |
+| colour (RGB mean and SD) | 0.463 | 0.009 | 0.237 | 0.236 |
+
+- Core42 would rank 23rd of 27 on the leaderboard average, as predicted in writing beforehand. It is built to be sensitive to handling, so a low index is its expected operating window on this benchmark.
+- Used as a reader of a foundation model (Phikon-v2): removing what Core42 predicts, on top of what colour predicts, raised the model's index by +0.083 on Camelyon and by under 0.01 on TCGA and Tolkach. Fitted on half of each dataset's hospitals, the same contrast was +0.086 on Camelyon and not positive elsewhere.
+
+**Reading all three.** The block's contribution beyond colour has shown on Camelyon-derived tiles in two different tasks, and nowhere else so far. The two Camelyon results share source data and are not independent replications.
+
 ## 2. As a fingerprint of a section (related-section retrieval)
 
 These ask whether the 42 axes recognise the same piece of tissue again. Retrieval compares per-slide or per-section distributions of the axes (robust standardisation fitted on the gallery only, then quantile summaries and nearest-neighbour ranking). The HTAN rows used the bundled corrected normaliser.
